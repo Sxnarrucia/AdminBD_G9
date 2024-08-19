@@ -165,5 +165,74 @@ ALTER PROFILE DEFAULT LIMIT
 --DROP USER RESERVADB_USER;
 --DROP ROLE RESERVAS_ROLE;
 
+INSERT INTO Clientes (Nombre, Apellido, Email, Telefono)
+VALUES ('Juan', 'Pérez', 'juan.perez@example.com', '1234567890');
+
+INSERT INTO Clientes (Nombre, Apellido, Email, Telefono)
+VALUES ('María', 'Gómez', 'maria.gomez@example.com', '0987654321');
+
+INSERT INTO Clientes (Nombre, Apellido, Email, Telefono)
+VALUES ('Carlos', 'Rodríguez', 'carlos.rodriguez@example.com', '1122334455');
+
+INSERT INTO Mesas (NumeroMesa, Capacidad, Ubicacion)
+VALUES (1, 4, 'Planta Baja');
+
+INSERT INTO Mesas (NumeroMesa, Capacidad, Ubicacion)
+VALUES (2, 6, 'Terraza');
+
+INSERT INTO Mesas (NumeroMesa, Capacidad, Ubicacion)
+VALUES (3, 2, 'VIP');
+
+
+INSERT INTO Reservas (ClienteID, MesaID, FechaReserva, NumeroPersonas)
+VALUES (1, 1, TO_TIMESTAMP('2024-08-18 19:00:00', 'YYYY-MM-DD HH24:MI:SS'), 4);
+
+INSERT INTO Reservas (ClienteID, MesaID, FechaReserva, NumeroPersonas)
+VALUES (2, 2, TO_TIMESTAMP('2024-08-19 20:00:00', 'YYYY-MM-DD HH24:MI:SS'), 6);
+
+
+INSERT INTO Menus (Nombre, Descripcion, Precio)
+VALUES ('Pizza Margherita', 'Pizza clásica italiana con tomate, mozzarella y albahaca', 12.50);
+
+INSERT INTO Menus (Nombre, Descripcion, Precio)
+VALUES ('Ensalada César', 'Ensalada con pollo, lechuga romana, crutones y aderezo César', 8.90);
+
+INSERT INTO Menus (Nombre, Descripcion, Precio)
+VALUES ('Tiramisu', 'Postre italiano hecho con café, queso mascarpone y cacao', 6.50);
+
+
+INSERT INTO Pedidos (ReservaID, Total)
+VALUES (1, 37.90);
+
+INSERT INTO Pedidos (ReservaID, Total)
+VALUES (2, 25.40);
+
+
+INSERT INTO DetallePedidos (PedidoID, MenuID, Cantidad, Precio)
+VALUES (1, 1, 2, 12.50);
+
+INSERT INTO DetallePedidos (PedidoID, MenuID, Cantidad, Precio)
+VALUES (1, 2, 1, 8.90);
+
+INSERT INTO DetallePedidos (PedidoID, MenuID, Cantidad, Precio)
+VALUES (2, 3, 2, 6.50);
+
+
+INSERT INTO Empleados (Nombre, Apellido, Cargo)
+VALUES ('Luis', 'Ramírez', 'Mesero');
+
+INSERT INTO Empleados (Nombre, Apellido, Cargo)
+VALUES ('Ana', 'Fernández', 'Cocinera');
+
+INSERT INTO Empleados (Nombre, Apellido, Cargo)
+VALUES ('Pedro', 'López', 'Gerente');
+
+
+INSERT INTO Restaurantes (Nombre, Direccion, Telefono, Email)
+VALUES ('Restaurante El Sabor', 'Calle Falsa 123, Ciudad X', '22223333', 'contacto@sabor.com');
+
+INSERT INTO Restaurantes (Nombre, Direccion, Telefono, Email)
+VALUES ('Restaurante Gourmet', 'Avenida Principal 456, Ciudad Y', '33334444', 'info@gourmet.com');
+
 
 

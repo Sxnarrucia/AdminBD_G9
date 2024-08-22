@@ -3,7 +3,7 @@
 /****************************************************************************************************************************************************************
 ***                                                                        TABLESPACE                                                                         ***
 ****************************************************************************************************************************************************************/
-
+--ALTER SESSION SET CONTAINER = XEPDB1;
 --Creacion de Tablespace
 CREATE TABLESPACE ReservasTS
 DATAFILE 'reservas_ts.dbf'
@@ -27,9 +27,9 @@ SEGMENT SPACE MANAGEMENT AUTO;
 ****************************************************************************************************************************************************************/
 
 -- Creacion de Usuarios y Roles
-ALTER SESSION SET "_ORACLE_SCRIPT" = TRUE;
+--ALTER SESSION SET "_ORACLE_SCRIPT" = TRUE;
 
-CREATE USER reservadb_user IDENTIFIED BY 12345
+CREATE USER reservadb_user IDENTIFIED BY hola12345
 DEFAULT TABLESPACE ReservasTS
 QUOTA UNLIMITED ON ReservasTS;
 
@@ -146,30 +146,30 @@ CREATE TABLE DETALLEPEDIDO (
 TABLESPACE PedidosTS;
 
 -- Drop tablas y tablespaces para hacer modificaciones
-/*
-SELECT CONSTRAINT_NAME, TABLE_NAME
-FROM USER_CONSTRAINTS
-WHERE R_CONSTRAINT_NAME IN (
-    SELECT CONSTRAINT_NAME
-    FROM USER_CONSTRAINTS
-    WHERE TABLE_NAME = 'MESA' AND CONSTRAINT_TYPE = 'P'
-) AND CONSTRAINT_TYPE = 'R';
 
-ALTER TABLE RESERVA DROP CONSTRAINT FK_RESERVA_MESA;
+--SELECT CONSTRAINT_NAME, TABLE_NAME
+--FROM USER_CONSTRAINTS
+--WHERE R_CONSTRAINT_NAME IN (
+--    SELECT CONSTRAINT_NAME
+--    FROM USER_CONSTRAINTS
+--    WHERE TABLE_NAME = 'MESA' AND CONSTRAINT_TYPE = 'P'
+--) AND CONSTRAINT_TYPE = 'R';
+--
+--ALTER TABLE RESERVA DROP CONSTRAINT FK_RESERVA_MESA;
+--
+--DROP TABLE CLIENTE;
+--DROP TABLE RESTAURANTE;
+--DROP TABLE EMPLEADO;
+--DROP TABLE MESA;
+--DROP TABLE RESERVA;
+--DROP TABLE MENU;
+--DROP TABLE PEDIDO;
+--DROP TABLE DETALLEPEDIDO;
+--DROP TABLESPACE PedidosTS INCLUDING CONTENTS AND DATAFILES;
+--DROP TABLESPACE ReservasTS INCLUDING CONTENTS AND DATAFILES;
+--DROP USER RESERVADB_USER;
+--DROP ROLE RESERVAS_ROLE;
 
-DROP TABLE CLIENTE;
-DROP TABLE RESTAURANTE;
-DROP TABLE EMPLEADO;
-DROP TABLE MESA;
-DROP TABLE RESERVA;
-DROP TABLE MENU;
-DROP TABLE PEDIDO;
-DROP TABLE DETALLEPEDIDO;
-DROP TABLESPACE PedidosTS INCLUDING CONTENTS AND DATAFILES;
-DROP TABLESPACE ReservasTS INCLUDING CONTENTS AND DATAFILES;
-DROP USER RESERVADB_USER;
-DROP ROLE RESERVAS_ROLE;
-*/
 
 /****************************************************************************************************************************************************************
 ***                                                                          INDICES                                                                          ***
@@ -193,7 +193,7 @@ ON Cliente (FechaRegistro)
 TABLESPACE ReservasTS;
 
 
--- Politica de Contraseñas
+-- Politica de Contraseï¿½as
 ALTER PROFILE DEFAULT LIMIT
     FAILED_LOGIN_ATTEMPTS 5
     PASSWORD_LIFE_TIME 90
@@ -272,17 +272,17 @@ INSERT INTO RESTAURANTE (NOMBRE, DIRECCION, TELEFONO, EMAIL) VALUES ('Restaurant
 INSERT INTO RESTAURANTE (NOMBRE, DIRECCION, TELEFONO, EMAIL) VALUES ('Restaurante Casa del Rio', 'Calle Falsa 159, Ciudad D', '55556666', 'contacto@casadelrio.com');
 INSERT INTO RESTAURANTE (NOMBRE, DIRECCION, TELEFONO, EMAIL) VALUES ('Restaurante Delicias Urbanas', 'Avenida Principal 268, Ciudad D', '33337777', 'info@deliurb.com');
 INSERT INTO RESTAURANTE (NOMBRE, DIRECCION, TELEFONO, EMAIL) VALUES ('Restaurante Esquina Gourmet', 'Calle Falsa 268, Ciudad X', '99991111', 'contacto@esqgourmet.com');
-INSERT INTO RESTAURANTE (NOMBRE, DIRECCION, TELEFONO, EMAIL) VALUES ('Restaurante Brisas Mediterráneas', 'Avenida Principal 159, Ciudad X', '77772222', 'info@brisasmed.com');
-INSERT INTO RESTAURANTE (NOMBRE, DIRECCION, TELEFONO, EMAIL) VALUES ('Restaurante Jardín Secreto', 'Calle Falsa 908, Ciudad Y', '88880000', 'contacto@jardinsecreto.com');
+INSERT INTO RESTAURANTE (NOMBRE, DIRECCION, TELEFONO, EMAIL) VALUES ('Restaurante Brisas Mediterrï¿½neas', 'Avenida Principal 159, Ciudad X', '77772222', 'info@brisasmed.com');
+INSERT INTO RESTAURANTE (NOMBRE, DIRECCION, TELEFONO, EMAIL) VALUES ('Restaurante Jardï¿½n Secreto', 'Calle Falsa 908, Ciudad Y', '88880000', 'contacto@jardinsecreto.com');
 INSERT INTO RESTAURANTE (NOMBRE, DIRECCION, TELEFONO, EMAIL) VALUES ('Restaurante Sol y Sombra', 'Avenida Principal 102, Ciudad Y', '55553333', 'info@solsombra.com');
 INSERT INTO RESTAURANTE (NOMBRE, DIRECCION, TELEFONO, EMAIL) VALUES ('Restaurante Rincon Tranquilo', 'Calle Falsa 102, Ciudad Z', '44449999', 'contacto@rtranquilo.com');
 INSERT INTO RESTAURANTE (NOMBRE, DIRECCION, TELEFONO, EMAIL) VALUES ('Restaurante Encanto Natural', 'Avenida Principal 908, Ciudad Z', '22220000', 'info@encantonat.com');
 INSERT INTO RESTAURANTE (NOMBRE, DIRECCION, TELEFONO, EMAIL) VALUES ('Restaurante El Cebollin', 'Calle Falsa 714, Ciudad U', '33334444', 'contacto@elcebollin.com');
 INSERT INTO RESTAURANTE (NOMBRE, DIRECCION, TELEFONO, EMAIL) VALUES ('Restaurante Ventana del Valle', 'Avenida Principal 622, Ciudad U', '55551111', 'info@vdelv.com');
-INSERT INTO RESTAURANTE (NOMBRE, DIRECCION, TELEFONO, EMAIL) VALUES ('Restaurante Sazón de Abuela Maria', 'Calle Falsa 622, Ciudad V', '99998888', 'contacto@abuelamaria.com');
+INSERT INTO RESTAURANTE (NOMBRE, DIRECCION, TELEFONO, EMAIL) VALUES ('Restaurante Sazï¿½n de Abuela Maria', 'Calle Falsa 622, Ciudad V', '99998888', 'contacto@abuelamaria.com');
 INSERT INTO RESTAURANTE (NOMBRE, DIRECCION, TELEFONO, EMAIL) VALUES ('Restaurante Huellas Andinas', 'Avenida Principal 714, Ciudad V', '88882222', 'info@handinas.com');
 INSERT INTO RESTAURANTE (NOMBRE, DIRECCION, TELEFONO, EMAIL) VALUES ('Restaurante Canto del Chef', 'Calle Falsa 440, Ciudad W', '33336666', 'contacto@callefalsa.com');
-INSERT INTO RESTAURANTE (NOMBRE, DIRECCION, TELEFONO, EMAIL) VALUES ('Restaurante El Rincón de Lupita', 'Avenida Principal 371, Ciudad W', '44447777', 'info@rinconlupita.com');
+INSERT INTO RESTAURANTE (NOMBRE, DIRECCION, TELEFONO, EMAIL) VALUES ('Restaurante El Rincï¿½n de Lupita', 'Avenida Principal 371, Ciudad W', '44447777', 'info@rinconlupita.com');
 
 -- Inserts para la tabla Empleado
 -- Gerentes
@@ -560,51 +560,51 @@ INSERT INTO MESA (RESTAURANTEID, NUMEROMESA, CAPACIDAD, UBICACION) VALUES (20, 7
 INSERT INTO MENU (NOMBRE, DESCRIPCION, PRECIO) VALUES ('Pizza Margherita', 'Pizza clasica italiana con tomate, mozzarella y albahaca', 12.50);
 INSERT INTO MENU (NOMBRE, DESCRIPCION, PRECIO) VALUES ('Ensalada Cesar', 'Ensalada con pollo, lechuga romana, crutones y aderezo Cesar', 8.90);
 INSERT INTO MENU (NOMBRE, DESCRIPCION, PRECIO) VALUES ('Tiramisu', 'Postre italiano hecho con cafe, queso mascarpone y cacao', 6.50);
-INSERT INTO MENU (NOMBRE, DESCRIPCION, PRECIO) VALUES ('Tacos al Pastor', 'Tacos de cerdo marinado con piña, cebolla y cilantro', 3.50);
-INSERT INTO MENU (NOMBRE, DESCRIPCION, PRECIO) VALUES ('Paella Valenciana', 'Arroz con mariscos, pollo, y verduras al estilo español', 25.00);
+INSERT INTO MENU (NOMBRE, DESCRIPCION, PRECIO) VALUES ('Tacos al Pastor', 'Tacos de cerdo marinado con piï¿½a, cebolla y cilantro', 3.50);
+INSERT INTO MENU (NOMBRE, DESCRIPCION, PRECIO) VALUES ('Paella Valenciana', 'Arroz con mariscos, pollo, y verduras al estilo espaï¿½ol', 25.00);
 INSERT INTO MENU (NOMBRE, DESCRIPCION, PRECIO) VALUES ('Sushi Sashimi', 'Variedad de pescado crudo fresco cortado finamente', 20.00);
 INSERT INTO MENU (NOMBRE, DESCRIPCION, PRECIO) VALUES ('Risotto de setas', 'Arroz cremoso con setas y queso parmesano', 18.00);
 INSERT INTO MENU (NOMBRE, DESCRIPCION, PRECIO) VALUES ('Chili con carne', 'Guiso picante de carne con frijoles y tomate', 15.00);
 INSERT INTO MENU (NOMBRE, DESCRIPCION, PRECIO) VALUES ('Bibimbap', 'Plato coreano con arroz, vegetales surtidos, carne y huevo', 16.00);
 INSERT INTO MENU (NOMBRE, DESCRIPCION, PRECIO) VALUES ('Falafel', 'Croquetas de garbanzo servidas con salsa tahini', 9.00);
-INSERT INTO MENU (NOMBRE, DESCRIPCION, PRECIO) VALUES ('Tom Yum Goong', 'Sopa tailandesa picante y ácida con camarones', 13.50);
-INSERT INTO MENU (NOMBRE, DESCRIPCION, PRECIO) VALUES ('Pato a la Pekín', 'Pato asado crujiente servido con crepes, salsa hoisin y cebolletas', 30.00);
+INSERT INTO MENU (NOMBRE, DESCRIPCION, PRECIO) VALUES ('Tom Yum Goong', 'Sopa tailandesa picante y ï¿½cida con camarones', 13.50);
+INSERT INTO MENU (NOMBRE, DESCRIPCION, PRECIO) VALUES ('Pato a la Pekï¿½n', 'Pato asado crujiente servido con crepes, salsa hoisin y cebolletas', 30.00);
 INSERT INTO MENU (NOMBRE, DESCRIPCION, PRECIO) VALUES ('Pad Thai', 'Fideos de arroz salteados con tofu, huevo, y brotes de soja', 14.00);
 INSERT INTO MENU (NOMBRE, DESCRIPCION, PRECIO) VALUES ('Pollo Tandoori', 'Pollo marinado en especias y yogur, asado en un tandoor', 17.00);
 INSERT INTO MENU (NOMBRE, DESCRIPCION, PRECIO) VALUES ('Moussaka', 'Cazuela griega con berenjena, carne picada y bechamel', 13.00);
 INSERT INTO MENU (NOMBRE, DESCRIPCION, PRECIO) VALUES ('Borsch', 'Sopa de remolacha con carne y verduras al estilo europeo del este', 12.00);
 INSERT INTO MENU (NOMBRE, DESCRIPCION, PRECIO) VALUES ('Carbonara', 'Pasta con salsa cremosa de huevo, queso pecorino y guanciale', 15.50);
 INSERT INTO MENU (NOMBRE, DESCRIPCION, PRECIO) VALUES ('Fondue de queso', 'Quesos suizos fundidos con vino blanco, servidos con pan para mojar', 22.00);
-INSERT INTO MENU (NOMBRE, DESCRIPCION, PRECIO) VALUES ('Ratatouille', 'Guiso de vegetales provenzal, ideal como acompañamiento', 11.00);
+INSERT INTO MENU (NOMBRE, DESCRIPCION, PRECIO) VALUES ('Ratatouille', 'Guiso de vegetales provenzal, ideal como acompaï¿½amiento', 11.00);
 INSERT INTO MENU (NOMBRE, DESCRIPCION, PRECIO) VALUES ('Filete Mignon', 'Corte fino de ternera servido con salsa de vino tinto', 35.00);
-INSERT INTO MENU (NOMBRE, DESCRIPCION, PRECIO) VALUES ('Gazpacho', 'Sopa fría de tomate con pimientos, cebolla y ajo', 8.00);
-INSERT INTO MENU (NOMBRE, DESCRIPCION, PRECIO) VALUES ('Ceviche', 'Pescado crudo marinado en jugo de cítricos con ají y cilantro', 12.50);
+INSERT INTO MENU (NOMBRE, DESCRIPCION, PRECIO) VALUES ('Gazpacho', 'Sopa frï¿½a de tomate con pimientos, cebolla y ajo', 8.00);
+INSERT INTO MENU (NOMBRE, DESCRIPCION, PRECIO) VALUES ('Ceviche', 'Pescado crudo marinado en jugo de cï¿½tricos con ajï¿½ y cilantro', 12.50);
 INSERT INTO MENU (NOMBRE, DESCRIPCION, PRECIO) VALUES ('Calzone', 'Pizza rellena al horno con queso, carne y vegetales', 14.50);
 INSERT INTO MENU (NOMBRE, DESCRIPCION, PRECIO) VALUES ('Curry de cordero', 'Cordero tierno cocinado en una salsa de curry especiada', 19.00);
-INSERT INTO MENU (NOMBRE, DESCRIPCION, PRECIO) VALUES ('Pho', 'Sopa vietnamita de fideos con carne de res y hierbas aromáticas', 12.00);
+INSERT INTO MENU (NOMBRE, DESCRIPCION, PRECIO) VALUES ('Pho', 'Sopa vietnamita de fideos con carne de res y hierbas aromï¿½ticas', 12.00);
 INSERT INTO MENU (NOMBRE, DESCRIPCION, PRECIO) VALUES ('Chow Mein', 'Fideos chinos salteados con vegetales y opciones de carne o tofu', 11.50);
 INSERT INTO MENU (NOMBRE, DESCRIPCION, PRECIO) VALUES ('Empanadas', 'Pastelitos de masa rellenos de carne, pollo o queso', 2.50);
-INSERT INTO MENU (NOMBRE, DESCRIPCION, PRECIO) VALUES ('Quiche Lorraine', 'Pastel francés de huevo, crema y lardons', 9.50);
-INSERT INTO MENU (NOMBRE, DESCRIPCION, PRECIO) VALUES ('Lasaña', 'Capas de pasta, carne, salsa de tomate y bechamel, horneadas al punto', 13.50);
+INSERT INTO MENU (NOMBRE, DESCRIPCION, PRECIO) VALUES ('Quiche Lorraine', 'Pastel francï¿½s de huevo, crema y lardons', 9.50);
+INSERT INTO MENU (NOMBRE, DESCRIPCION, PRECIO) VALUES ('Lasaï¿½a', 'Capas de pasta, carne, salsa de tomate y bechamel, horneadas al punto', 13.50);
 INSERT INTO MENU (NOMBRE, DESCRIPCION, PRECIO) VALUES ('Tarte Tatin', 'Tarta de manzana caramelizada, servida invertida', 7.50);
 INSERT INTO MENU (NOMBRE, DESCRIPCION, PRECIO) VALUES ('Baklava', 'Pastel dulce de hojaldre con nueces y miel', 5.00);
-INSERT INTO MENU (NOMBRE, DESCRIPCION, PRECIO) VALUES ('Feijoada', 'Guiso brasileño de frijoles negros con carne de cerdo', 14.00);
+INSERT INTO MENU (NOMBRE, DESCRIPCION, PRECIO) VALUES ('Feijoada', 'Guiso brasileï¿½o de frijoles negros con carne de cerdo', 14.00);
 INSERT INTO MENU (NOMBRE, DESCRIPCION, PRECIO) VALUES ('Jambalaya', 'Arroz con pollo, salchichas y mariscos al estilo criollo', 15.00);
-INSERT INTO MENU (NOMBRE, DESCRIPCION, PRECIO) VALUES ('Poke bowl', 'Tazón de arroz con pescado crudo, verduras y umami sauce', 13.75);
+INSERT INTO MENU (NOMBRE, DESCRIPCION, PRECIO) VALUES ('Poke bowl', 'Tazï¿½n de arroz con pescado crudo, verduras y umami sauce', 13.75);
 INSERT INTO MENU (NOMBRE, DESCRIPCION, PRECIO) VALUES ('Veggie Burger', 'Hamburguesa vegetariana servida con lechuga, tomate y pepinillo', 11.00);
-INSERT INTO MENU (NOMBRE, DESCRIPCION, PRECIO) VALUES ('Spaghetti Bolognese', 'Espaguetis con salsa de carne al estilo boloñés', 12.00);
-INSERT INTO MENU (NOMBRE, DESCRIPCION, PRECIO) VALUES ('Banoffee Pie', 'Tarta de plátano con crema y toffee', 7.25);
+INSERT INTO MENU (NOMBRE, DESCRIPCION, PRECIO) VALUES ('Spaghetti Bolognese', 'Espaguetis con salsa de carne al estilo boloï¿½ï¿½s', 12.00);
+INSERT INTO MENU (NOMBRE, DESCRIPCION, PRECIO) VALUES ('Banoffee Pie', 'Tarta de plï¿½tano con crema y toffee', 7.25);
 INSERT INTO MENU (NOMBRE, DESCRIPCION, PRECIO) VALUES ('Apple Pie', 'Pastel de manzana tradicional, servido con helado', 6.75);
 INSERT INTO MENU (NOMBRE, DESCRIPCION, PRECIO) VALUES ('Bao Buns', 'Panecillos al vapor rellenos de carne cocida', 8.50);
 INSERT INTO MENU (NOMBRE, DESCRIPCION, PRECIO) VALUES ('Samosas', 'Empanadillas indias rellenas de verduras o carne', 7.00);
 INSERT INTO MENU (NOMBRE, DESCRIPCION, PRECIO) VALUES ('Ramen', 'Sopa japonesa de fideos con caldo de carne y vegetales', 11.00);
-INSERT INTO MENU (NOMBRE, DESCRIPCION, PRECIO) VALUES ('Dumplings', 'Bollos rellenos al vapor, común en la cocina china', 10.00);
+INSERT INTO MENU (NOMBRE, DESCRIPCION, PRECIO) VALUES ('Dumplings', 'Bollos rellenos al vapor, comï¿½n en la cocina china', 10.00);
 INSERT INTO MENU (NOMBRE, DESCRIPCION, PRECIO) VALUES ('Pollo Tandoori', 'Pollo marinado en especias tandoori y yogur, asado', 12.75);
 INSERT INTO MENU (NOMBRE, DESCRIPCION, PRECIO) VALUES ('Souvlaki', 'Brochetas de carne griegas servidas con tzatziki', 9.25);
 INSERT INTO MENU (NOMBRE, DESCRIPCION, PRECIO) VALUES ('Curry de pollo', 'Curry indio de pollo con una mezcla de especias y crema', 13.50);
-INSERT INTO MENU (NOMBRE, DESCRIPCION, PRECIO) VALUES ('Éclairs', 'Pastelito de masa choux relleno de crema y cubierto de chocolate', 5.00);
+INSERT INTO MENU (NOMBRE, DESCRIPCION, PRECIO) VALUES ('ï¿½clairs', 'Pastelito de masa choux relleno de crema y cubierto de chocolate', 5.00);
 INSERT INTO MENU (NOMBRE, DESCRIPCION, PRECIO) VALUES ('Canelones', 'Pasta rellena de carne y cubierta de bechamel y queso', 13.50);
-INSERT INTO MENU (NOMBRE, DESCRIPCION, PRECIO) VALUES ('Pesto Pasta', 'Pasta con salsa de pesto verde hecho con albahaca y piñones', 11.50);
+INSERT INTO MENU (NOMBRE, DESCRIPCION, PRECIO) VALUES ('Pesto Pasta', 'Pasta con salsa de pesto verde hecho con albahaca y piï¿½ones', 11.50);
 INSERT INTO MENU (NOMBRE, DESCRIPCION, PRECIO) VALUES ('Panna Cotta', 'Postre de crema con gelatina y frutas del bosque', 6.50);
 INSERT INTO MENU (NOMBRE, DESCRIPCION, PRECIO) VALUES ('Cheesecake', 'Tarta de queso con base de galleta y cobertura de fruta', 7.50);
 INSERT INTO MENU (NOMBRE, DESCRIPCION, PRECIO) VALUES ('Meatloaf', 'Pastel de carne americano, servido con salsa de tomate', 11.50);
@@ -615,6 +615,38 @@ INSERT INTO MENU (NOMBRE, DESCRIPCION, PRECIO) VALUES ('Burger de queso', 'Hambu
 INSERT INTO MENU (NOMBRE, DESCRIPCION, PRECIO) VALUES ('Burrito de carne', 'Tortilla de harina rellena de carne, frijoles y arroz', 8.75);
 INSERT INTO MENU (NOMBRE, DESCRIPCION, PRECIO) VALUES ('Enchiladas', 'Tortillas rellenas de pollo, cubiertas con salsa de chile y queso', 11.00);
 
+-- Inserts para la tabla Reserva
+INSERT INTO RESERVA (CLIENTEID, MESAID, NUMEROPERSONAS, FECHARESERVA, ESTADO, ACTIVO)
+VALUES (1, 3, 4, TO_DATE('2024-08-22', 'YYYY-MM-DD'), 'Confirmada', 1);
+
+INSERT INTO RESERVA (CLIENTEID, MESAID, NUMEROPERSONAS, FECHARESERVA, ESTADO, ACTIVO)
+VALUES (2, 5, 2, TO_DATE('2024-08-23', 'YYYY-MM-DD'), 'Pendiente', 1);
+
+INSERT INTO RESERVA (CLIENTEID, MESAID, NUMEROPERSONAS, FECHARESERVA, ESTADO, ACTIVO)
+VALUES (3, 2, 6, TO_DATE('2024-08-24', 'YYYY-MM-DD'), 'Cancelada', 1);
+
+-- Inserts para la tabla Pedido
+INSERT INTO PEDIDO (RESERVAID, FECHAPEDIDO, TOTAL)
+VALUES (1, TO_DATE('2024-08-22', 'YYYY-MM-DD'), 120.50);
+
+INSERT INTO PEDIDO (RESERVAID, FECHAPEDIDO, TOTAL)
+VALUES (2, TO_DATE('2024-08-23', 'YYYY-MM-DD'), 75.00);
+
+INSERT INTO PEDIDO (RESERVAID, FECHAPEDIDO, TOTAL)
+VALUES (3, TO_DATE('2024-08-24', 'YYYY-MM-DD'), 150.75);
+
+-- Inserts para la tabla DetallePedido
+INSERT INTO DETALLEPEDIDO (PEDIDOID, MENUID, CANTIDAD, PRECIO)
+VALUES (1, 2, 3, 20.50);
+
+INSERT INTO DETALLEPEDIDO (PEDIDOID, MENUID, CANTIDAD, PRECIO)
+VALUES (1, 5, 1, 60.00);
+
+INSERT INTO DETALLEPEDIDO (PEDIDOID, MENUID, CANTIDAD, PRECIO)
+VALUES (2, 3, 2, 25.00);
+
+INSERT INTO DETALLEPEDIDO (PEDIDOID, MENUID, CANTIDAD, PRECIO)
+VALUES (3, 4, 1, 150.75);
 
 /****************************************************************************************************************************************************************
 ***                                                                Procedimientos Almacenados                                                                 ***
@@ -712,120 +744,121 @@ END USP_ObtenerCliente;
 ***                                                                     Bloques Anonimos                                                                      ***
 ****************************************************************************************************************************************************************/
 
-SET SERVEROUTPUT ON;
+--SET SERVEROUTPUT ON;
+--
+---- |Bloque anonimo para ejecutar el USP_InsertarCliente|
+--ACCEPT p_nombrePrompt CHAR PROMPT 'Ingrese el nombre del cliente: ' -- Le solicita los datos al usuario
+--ACCEPT p_apellidoPrompt CHAR PROMPT 'Ingrese el apellido del cliente: '
+--ACCEPT p_emailPrompt CHAR PROMPT 'Ingrese el email del cliente: '
+--ACCEPT p_telefonoPrompt CHAR PROMPT 'Ingrese el telï¿½fono del cliente: '
+--
+--BEGIN
+--    USP_InsertarCliente(
+--        p_nombre        => '&p_nombrePrompt',
+--        p_apellido      => '&p_apellidoPrompt',
+--        p_email         => '&p_emailPrompt',
+--        p_telefono      => '&p_telefonoPrompt',
+--        p_fechaRegistro => SYSDATE,  -- Asigna la fecha de registro actual automï¿½ticamente
+--        p_activo        => 1         -- Asigna el estado activo automï¿½ticamente
+--    );
+--    DBMS_OUTPUT.PUT_LINE('Cliente insertado correctamente.'); -- Mensaje de confirmaciï¿½n
+--END;
+--/
+--
+--SELECT * FROM CLIENTE;
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+---- |Bloque anonimo para ejecutar el USP_EliminarCliente|
+--ACCEPT p_clienteIdPrompt CHAR PROMPT 'Ingrese el ID del cliente a eliminar: '
+--
+--DECLARE
+--    v_clienteId NUMBER;
+--BEGIN
+--    v_clienteId := TO_NUMBER('&p_clienteIdPrompt'); -- Convierte la entrada del usuario a nï¿½mero y la asigna a la variable
+--
+--    USP_EliminarCliente(p_clienteId => v_clienteId); -- Llama al procedimiento almacenado para eliminar el cliente
+--    
+--    COMMIT;
+--    DBMS_OUTPUT.PUT_LINE('Cliente eliminado correctamente.'); -- Mensaje de confirmaciï¿½n
+--    
+--EXCEPTION
+--    WHEN OTHERS THEN
+--        ROLLBACK; -- En caso de error, revierte cualquier cambio
+--        DBMS_OUTPUT.PUT_LINE('Error al eliminar el cliente: ' || SQLERRM);
+--END;
+--/
+--
+--SELECT * FROM CLIENTE;
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+---- |Bloque anonimo para ejecutar el USP_ActualizarCliente|
+--ACCEPT p_clienteIdPrompt CHAR PROMPT 'Ingrese el ID del cliente a actualizar: '
+--ACCEPT p_nombrePrompt CHAR PROMPT 'Ingrese el nuevo nombre del cliente: '
+--ACCEPT p_apellidoPrompt CHAR PROMPT 'Ingrese el nuevo apellido del cliente: '
+--ACCEPT p_emailPrompt CHAR PROMPT 'Ingrese el nuevo email del cliente: '
+--ACCEPT p_telefonoPrompt CHAR PROMPT 'Ingrese el nuevo telï¿½fono del cliente: '
+--ACCEPT p_activoPrompt CHAR PROMPT 'Ingrese el estado activo del cliente (1 para activo, 0 para inactivo): '
+--
+--DECLARE
+--BEGIN
+--    USP_ActualizarCliente(
+--        p_clienteId     => TO_NUMBER('&p_clienteIdPrompt'),
+--        p_nombre        => '&p_nombrePrompt',
+--        p_apellido      => '&p_apellidoPrompt',
+--        p_email         => '&p_emailPrompt',
+--        p_telefono      => '&p_telefonoPrompt',
+--        p_fechaRegistro => SYSDATE,  -- Asigna la fecha de registro actual automï¿½ticamente
+--        p_activo        => TO_NUMBER('&p_activoPrompt')
+--    );
+--
+--    DBMS_OUTPUT.PUT_LINE('Cliente actualizado correctamente.'); -- Mensaje de confirmaciï¿½n
+--
+--    COMMIT;
+--EXCEPTION
+--    WHEN OTHERS THEN
+--        DBMS_OUTPUT.PUT_LINE('Error al actualizar el cliente: ' || SQLERRM);
+--        ROLLBACK;
+--END;
+--/
+--
+--SELECT * FROM CLIENTE
+--WHERE CLIENTEID = &p_clienteIdPrompt;
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+---- |Bloque anonimo para ejecutar el USP_ObtenerCliente|
+--ACCEPT p_clienteIdPrompt CHAR PROMPT 'Por favor, ingrese el ID del cliente: '
+--
+--DECLARE
+--    v_cursor SYS_REFCURSOR;
+--    
+--    v_clienteId NUMBER;
+--    v_nombre VARCHAR2(100);
+--    v_apellido VARCHAR2(100);
+--    v_email VARCHAR2(100);
+--    v_telefono VARCHAR2(20);
+--    v_fechaRegistro DATE;
+--    v_activo NUMBER;
+--BEGIN
+--    USP_ObtenerCliente(p_clienteId => &p_clienteIdPrompt, p_cursor => v_cursor);
+--    LOOP
+--        FETCH v_cursor INTO v_clienteId, v_nombre, v_apellido, v_email, v_telefono, v_fechaRegistro, v_activo;
+--        EXIT WHEN v_cursor%NOTFOUND;
+--        
+--        DBMS_OUTPUT.PUT_LINE('Cliente ID: ' || v_clienteId);
+--        DBMS_OUTPUT.PUT_LINE('Nombre: ' || v_nombre);
+--        DBMS_OUTPUT.PUT_LINE('Apellido: ' || v_apellido);
+--        DBMS_OUTPUT.PUT_LINE('Email: ' || v_email);
+--        DBMS_OUTPUT.PUT_LINE('Telefono: ' || v_telefono);
+--        DBMS_OUTPUT.PUT_LINE('Fecha Registro: ' || TO_CHAR(v_fechaRegistro, 'DD-MON-YYYY'));
+--        DBMS_OUTPUT.PUT_LINE('Activo: ' || v_activo);
+--        DBMS_OUTPUT.PUT_LINE('---');
+--    END LOOP;
+--    CLOSE v_cursor;
+--EXCEPTION
+--    WHEN OTHERS THEN
+--        DBMS_OUTPUT.PUT_LINE('Error: ' || SQLERRM);
+--        IF v_cursor%ISOPEN THEN
+--            CLOSE v_cursor;
+--        END IF;
+--END;
+--/
 
--- |Bloque anonimo para ejecutar el USP_InsertarCliente|
-ACCEPT p_nombrePrompt CHAR PROMPT 'Ingrese el nombre del cliente: ' -- Le solicita los datos al usuario
-ACCEPT p_apellidoPrompt CHAR PROMPT 'Ingrese el apellido del cliente: '
-ACCEPT p_emailPrompt CHAR PROMPT 'Ingrese el email del cliente: '
-ACCEPT p_telefonoPrompt CHAR PROMPT 'Ingrese el teléfono del cliente: '
-
-BEGIN
-    USP_InsertarCliente(
-        p_nombre        => '&p_nombrePrompt',
-        p_apellido      => '&p_apellidoPrompt',
-        p_email         => '&p_emailPrompt',
-        p_telefono      => '&p_telefonoPrompt',
-        p_fechaRegistro => SYSDATE,  -- Asigna la fecha de registro actual automáticamente
-        p_activo        => 1         -- Asigna el estado activo automáticamente
-    );
-    DBMS_OUTPUT.PUT_LINE('Cliente insertado correctamente.'); -- Mensaje de confirmación
-END;
-/
-
-SELECT * FROM CLIENTE;
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------
--- |Bloque anonimo para ejecutar el USP_EliminarCliente|
-ACCEPT p_clienteIdPrompt CHAR PROMPT 'Ingrese el ID del cliente a eliminar: '
-
-DECLARE
-    v_clienteId NUMBER;
-BEGIN
-    v_clienteId := TO_NUMBER('&p_clienteIdPrompt'); -- Convierte la entrada del usuario a número y la asigna a la variable
-
-    USP_EliminarCliente(p_clienteId => v_clienteId); -- Llama al procedimiento almacenado para eliminar el cliente
-    
-    COMMIT;
-    DBMS_OUTPUT.PUT_LINE('Cliente eliminado correctamente.'); -- Mensaje de confirmación
-    
-EXCEPTION
-    WHEN OTHERS THEN
-        ROLLBACK; -- En caso de error, revierte cualquier cambio
-        DBMS_OUTPUT.PUT_LINE('Error al eliminar el cliente: ' || SQLERRM);
-END;
-/
-
-SELECT * FROM CLIENTE;
------------------------------------------------------------------------------------------------------------------------------------------------------------------
--- |Bloque anonimo para ejecutar el USP_ActualizarCliente|
-ACCEPT p_clienteIdPrompt CHAR PROMPT 'Ingrese el ID del cliente a actualizar: '
-ACCEPT p_nombrePrompt CHAR PROMPT 'Ingrese el nuevo nombre del cliente: '
-ACCEPT p_apellidoPrompt CHAR PROMPT 'Ingrese el nuevo apellido del cliente: '
-ACCEPT p_emailPrompt CHAR PROMPT 'Ingrese el nuevo email del cliente: '
-ACCEPT p_telefonoPrompt CHAR PROMPT 'Ingrese el nuevo teléfono del cliente: '
-ACCEPT p_activoPrompt CHAR PROMPT 'Ingrese el estado activo del cliente (1 para activo, 0 para inactivo): '
-
-DECLARE
-BEGIN
-    USP_ActualizarCliente(
-        p_clienteId     => TO_NUMBER('&p_clienteIdPrompt'),
-        p_nombre        => '&p_nombrePrompt',
-        p_apellido      => '&p_apellidoPrompt',
-        p_email         => '&p_emailPrompt',
-        p_telefono      => '&p_telefonoPrompt',
-        p_fechaRegistro => SYSDATE,  -- Asigna la fecha de registro actual automáticamente
-        p_activo        => TO_NUMBER('&p_activoPrompt')
-    );
-
-    DBMS_OUTPUT.PUT_LINE('Cliente actualizado correctamente.'); -- Mensaje de confirmación
-
-    COMMIT;
-EXCEPTION
-    WHEN OTHERS THEN
-        DBMS_OUTPUT.PUT_LINE('Error al actualizar el cliente: ' || SQLERRM);
-        ROLLBACK;
-END;
-/
-
-SELECT * FROM CLIENTE
-WHERE CLIENTEID = &p_clienteIdPrompt;
------------------------------------------------------------------------------------------------------------------------------------------------------------------
--- |Bloque anonimo para ejecutar el USP_ObtenerCliente|
-ACCEPT p_clienteIdPrompt CHAR PROMPT 'Por favor, ingrese el ID del cliente: '
-
-DECLARE
-    v_cursor SYS_REFCURSOR;
-    
-    v_clienteId NUMBER;
-    v_nombre VARCHAR2(100);
-    v_apellido VARCHAR2(100);
-    v_email VARCHAR2(100);
-    v_telefono VARCHAR2(20);
-    v_fechaRegistro DATE;
-    v_activo NUMBER;
-BEGIN
-    USP_ObtenerCliente(p_clienteId => &p_clienteIdPrompt, p_cursor => v_cursor);
-    LOOP
-        FETCH v_cursor INTO v_clienteId, v_nombre, v_apellido, v_email, v_telefono, v_fechaRegistro, v_activo;
-        EXIT WHEN v_cursor%NOTFOUND;
-        
-        DBMS_OUTPUT.PUT_LINE('Cliente ID: ' || v_clienteId);
-        DBMS_OUTPUT.PUT_LINE('Nombre: ' || v_nombre);
-        DBMS_OUTPUT.PUT_LINE('Apellido: ' || v_apellido);
-        DBMS_OUTPUT.PUT_LINE('Email: ' || v_email);
-        DBMS_OUTPUT.PUT_LINE('Telefono: ' || v_telefono);
-        DBMS_OUTPUT.PUT_LINE('Fecha Registro: ' || TO_CHAR(v_fechaRegistro, 'DD-MON-YYYY'));
-        DBMS_OUTPUT.PUT_LINE('Activo: ' || v_activo);
-        DBMS_OUTPUT.PUT_LINE('---');
-    END LOOP;
-    CLOSE v_cursor;
-EXCEPTION
-    WHEN OTHERS THEN
-        DBMS_OUTPUT.PUT_LINE('Error: ' || SQLERRM);
-        IF v_cursor%ISOPEN THEN
-            CLOSE v_cursor;
-        END IF;
-END;
-/
-
------------------------------------------------------------------------------------------------------------------------------------------------------------------
+--192.168.1.4:1521/XEPDB1
